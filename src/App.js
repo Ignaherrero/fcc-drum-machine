@@ -166,7 +166,9 @@ class App extends React.Component {
       sound.volume = this.state.volume;
       sound.currentTime = 0;
       sound.play();
-      const { id } = this.state.choseSound === "BankOne" ? bankOne.find(({ keyTrigger }) => keyTrigger === sound.id) : bankTwo.find(({ keyTrigger }) => keyTrigger === sound.id);
+      const { id } = this.state.choseSound === "BankOne" ? bankOne.find(({ keyTrigger }) => keyTrigger === sound.id) 
+      : 
+      bankTwo.find(({ keyTrigger }) => keyTrigger === sound.id);
       this.setState({
         display: id
       })
