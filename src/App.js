@@ -185,7 +185,11 @@ class App extends React.Component {
       <div id="container">
         <div id="drum-machine">
           <Display display={this.state.display} />
-          <ControlPanel switchSound={this.switchSound} switchPower={this.switchPower} handleVolumeChange={this.handleVolumeChange} volume={this.state.volume} />
+          <ControlPanel 
+            switchSound={this.switchSound} 
+            switchPower={this.switchPower} 
+            handleVolumeChange={this.handleVolumeChange} 
+            volume={this.state.volume} />
           <div id="drum-pad">
             <ul>
               {this.state.choseSound === "BankOne" ? bankOne.map((tecla) =>
