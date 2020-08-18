@@ -54,12 +54,12 @@ body {
   align-items: stretch;
 }
 
-.drum-pad {
+.table {
   margin: auto;
   width: 250px;
 }
 
-.pad {
+.drum-pad {
   padding: 0;
   margin: 0;
   display: block;

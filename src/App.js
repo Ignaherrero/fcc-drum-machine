@@ -185,7 +185,7 @@ class App extends React.Component {
         <div id="drum-machine">
           <Display display={this.state.display} />
           <ControlPanel switchSound={this.switchSound} switchPower={this.switchPower} handleVolumeChange={this.handleVolumeChange} volume={this.state.volume} />
-          <div id="drum-pad" className="drum-pad">
+          <div id="drum-pad" className="table">
             <ul className="grid-container">
               {this.state.choseSound === "BANKONE" ? BANKONE.map((tecla) =>
                 // Boton con sonido 1
