@@ -2,7 +2,7 @@ import React from "react";
 
 function ControlPanel(props) {
   return (
-    <div id="panel">
+    <div id="panel" className="panel">
       {/* Renderiza el boton switch de power */}
       <label className="switch">
         <input type="checkbox" />

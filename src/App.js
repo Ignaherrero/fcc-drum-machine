@@ -3,8 +3,9 @@ import './App.css';
 import Pad from './Components/Pad';
 import Display from "./Components/Display";
 import ControlPanel from "./Components/ControlPanel";
+
 // sonidos:
-const bankOne = [{
+const BANKONE = [{
   keyCode: 81,
   keyTrigger: 'Q',
   id: 'Heater-1',
@@ -52,7 +53,7 @@ const bankOne = [{
 },
 ];
 //Estos son diferentes sonidos:
-const bankTwo = [{
+const BANKTWO = [{
   keyCode: 81,
   keyTrigger: 'Q',
   id: 'Chord-1',
@@ -105,7 +106,7 @@ class App extends React.Component {
       volume: 0.50,
       power: true,
       id: "",
-      choseSound: "BankOne",
+      choseSound: "BANKONE",
       display: ""
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -137,8 +138,8 @@ class App extends React.Component {
   switchSound() {
     if (this.state.power) {
       this.setState(state => ({
-        choseSound: state.choseSound === "BankOne" ? "BankTwo" : "BankOne",
-        display: state.choseSound === "BankOne" ? "BankTwo" : "BankOne"
+        choseSound: state.choseSound === "BANKONE" ? "BANKTWO" : "BANKONE",
+        display: state.choseSound === "BANKONE" ? "BANKTWO" : "BANKONE"
       }))
       setTimeout(() => this.setState({
         display: String.fromCharCode(160)
@@ -148,13 +149,13 @@ class App extends React.Component {
 
   handleClick(downKeyTrigger) {
     let key;
-    key = bankOne.find(({ keyTrigger }) => keyTrigger === downKeyTrigger);
+    key = BANKONE.find(({ keyTrigger }) => keyTrigger === downKeyTrigger);
     this.playSound(key.keyTrigger);
   }
 
   handleKeyPress(e) {
     let key;
-    key = bankOne.find(({ keyCode }) => keyCode === e.keyCode);
+    key = BANKONE.find(({ keyCode }) => keyCode === e.keyCode);
     if (typeof key !== 'undefined') {
       this.playSound(key.keyTrigger);
     }
@@ -166,9 +167,7 @@ class App extends React.Component {
       sound.volume = this.state.volume;
       sound.currentTime = 0;
       sound.play();
-      const { id } = this.state.choseSound === "BankOne" ? bankOne.find(({ keyTrigger }) => keyTrigger === sound.id) 
-      : 
-      bankTwo.find(({ keyTrigger }) => keyTrigger === sound.id);
+      const { id } = this.state.choseSound === "BANKONE" ? BANKONE.find(({ keyTrigger }) => keyTrigger === sound.id) : BANKTWO.find(({ keyTrigger }) => keyTrigger === sound.id);
       this.setState({
         display: id
       })
@@ -182,17 +181,13 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div id="container">
+      <div id="container" className="container">
         <div id="drum-machine">
           <Display display={this.state.display} />
-          <ControlPanel 
-            switchSound={this.switchSound} 
-            switchPower={this.switchPower} 
-            handleVolumeChange={this.handleVolumeChange} 
-            volume={this.state.volume} />
-          <div id="drum-pad">
-            <ul>
-              {this.state.choseSound === "BankOne" ? bankOne.map((tecla) =>
+          <ControlPanel switchSound={this.switchSound} switchPower={this.switchPower} handleVolumeChange={this.handleVolumeChange} volume={this.state.volume} />
+          <div id="drum-pad" className="drum-pad">
+            <ul className="grid-container">
+              {this.state.choseSound === "BANKONE" ? BANKONE.map((tecla) =>
                 // Boton con sonido 1
                 <li key={tecla.keyCode}>
                   <Pad
@@ -201,7 +196,7 @@ class App extends React.Component {
                   </Pad>
                 </li>
                 // Boton con sonido 2
-              ) : bankTwo.map((tecla) =>
+              ) : BANKTWO.map((tecla) =>
                 <li key={tecla.keyCode}>
                   <Pad
                     tecla={tecla}

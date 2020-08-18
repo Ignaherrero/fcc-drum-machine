@@ -1,60 +1,75 @@
-#root {
+:root {
+  font-size: 14px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: #a7a7a7;
+  font-family: "Lato", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-body {
-  background-color: #a7a7a7;
-  font-family: "Lato", sans-serif;
-}
-#container {
+
+.container {
   background-color: #3f3f3f;
-  height: 75vh;
-  width: 30vw;
-  border: none;
+  height: 400px;
+  width: 300px;
   border-radius: 5px;
 }
-#drum-machine {
-  display: flex;
-  flex-direction: column;
-}
-#display {
-  height: 5em;
-  width: 90%;
-  background-color: black;
+
+.display {
+  display: block;
+  text-align: center;
+  line-height: 80px;
+  height: 80px;
   color: white;
-  vertical-align: middle;
-  border-style: none;
-  border-radius: 5px;
-  margin: 0.9rem auto;
+  background-color: black;
+  border-radius: 5px 5px 0px 0px;
 }
-span {
+
+.panel {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 1.5em auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 15px;
   justify-content: center;
+  align-items: stretch;
 }
-#panel {
- display: flex;
- justify-content: space-between; 
- width: 90%;
- margin:1.5em auto;
+
+.drum-pad {
+  margin: auto;
+  width: 250px;
 }
-#drum-pad {
-  margin:auto;
-  width:90%;  
-}
-ul{
-  display:flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  list-style-type: none;
-  margin:0;
-  padding:0;
-}
-li{
-  width: calc(90% / 3);
-  margin: 2px;
+
+.pad {
+  padding: 0;
+  margin: 0;
+  display: block;
+  color: white;
+  font-size: 1.5rem;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  border-style: none;
+  border-radius: .5rem;
 }
 
 .switch {
@@ -94,18 +109,19 @@ li{
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: red;
 }
-input:checked + .sound {
+
+input:checked+.sound {
   background-color: green;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -119,4 +135,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
